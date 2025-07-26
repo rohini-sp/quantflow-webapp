@@ -1,188 +1,95 @@
 "use client"
 
-import type React from "react"
-
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Input } from "@/components/ui/input"
+import { Separator } from "@/components/ui/separator"
 import {
-  Zap,
-  Shield,
-  Brain,
   ArrowRight,
+  BarChart3,
+  Brain,
+  Database,
+  Globe,
+  Zap,
+  Lock,
   Play,
-  Check,
+  Sparkles,
+  TrendingUp,
+  Users,
+  CheckCircle,
   Star,
+  MessageCircle,
+  Rocket,
   Menu,
   X,
-  Pause,
-  Volume2,
-  VolumeX,
-  Maximize,
-  RotateCcw,
-  DollarSign,
-  Users,
-  Activity,
-  BarChart3,
-  TrendingUp,
-  TrendingDown,
 } from "lucide-react"
-import Image from "next/image"
-import { useState, useEffect, useRef } from "react"
+import { useState } from "react"
 
-export default function LandingPage() {
+export default function QuantflowLanding() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [email, setEmail] = useState("")
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
-  const [isMuted, setIsMuted] = useState(true)
-  const [showDemo, setShowDemo] = useState(false)
-  const [demoStep, setDemoStep] = useState(0)
-  const videoRef = useRef<HTMLVideoElement>(null)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  const handleEmailSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitted(true)
-    setTimeout(() => setIsSubmitted(false), 3000)
-    setEmail("")
-  }
-
-  const toggleVideo = () => {
-    if (videoRef.current) {
-      if (isVideoPlaying) {
-        videoRef.current.pause()
-      } else {
-        videoRef.current.play()
-      }
-      setIsVideoPlaying(!isVideoPlaying)
-    }
-  }
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted
-      setIsMuted(!isMuted)
-    }
-  }
-
-  const startDemo = () => {
-    setShowDemo(true)
-    setDemoStep(0)
-  }
-
-  const nextDemoStep = () => {
-    setDemoStep((prev) => (prev + 1) % 4)
-  }
-
-  const resetDemo = () => {
-    setDemoStep(0)
-  }
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    element?.scrollIntoView({ behavior: "smooth" })
-    setIsMenuOpen(false)
-  }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen gradient-bg-hero">
       {/* Navigation */}
-      <nav
-        className={`border-b transition-all duration-300 sticky top-0 z-50 ${
-          isScrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-white/80 backdrop-blur-sm border-gray-100"
-        }`}
-      >
+      <nav className="sticky top-0 z-50 glass-effect border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <div className="flex items-center cursor-pointer" onClick={() => scrollToSection("hero")}>
-              <div className="w-8 h-8 bg-gradient-to-br from-teal-500 to-teal-700 rounded-lg flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-sm">Q</span>
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 gradient-bg-primary rounded-lg flex items-center justify-center">
+                <Sparkles className="w-5 h-5 text-white" />
               </div>
-              <span className="ml-2 text-xl font-semibold text-gray-900">QuantaFlow</span>
+              <span className="text-xl font-bold gradient-text">Quantflow</span>
             </div>
 
-            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <button
-                onClick={() => scrollToSection("features")}
-                className="text-gray-600 hover:text-teal-600 transition-colors"
-              >
+              <a href="#features" className="text-gray-600 hover:text-blue-600 transition-colors">
                 Features
-              </button>
-              <button
-                onClick={() => scrollToSection("pricing")}
-                className="text-gray-600 hover:text-teal-600 transition-colors"
-              >
+              </a>
+              <a href="#solutions" className="text-gray-600 hover:text-blue-600 transition-colors">
+                Solutions
+              </a>
+              <a href="#pricing" className="text-gray-600 hover:text-blue-600 transition-colors">
                 Pricing
-              </button>
-              <button
-                onClick={() => scrollToSection("testimonials")}
-                className="text-gray-600 hover:text-teal-600 transition-colors"
-              >
-                Testimonials
-              </button>
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="text-gray-600 hover:text-teal-600 transition-colors"
-              >
-                Contact
-              </button>
-              <Button variant="outline" className="border-teal-200 text-teal-700 hover:bg-teal-50 bg-transparent">
-                Login
-              </Button>
+              </a>
+              <a href="#resources" className="text-gray-600 hover:text-blue-600 transition-colors">
+                Resources
+              </a>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button className="md:hidden p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            <div className="flex items-center space-x-4">
+              <Button variant="ghost" className="hidden sm:inline-flex">
+                Sign In
+              </Button>
+              <Button className="gradient-bg-primary hover:opacity-90 transition-opacity text-white">
+                Start Free Trial
+              </Button>
+              <button className="md:hidden p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
 
           {/* Mobile Menu */}
           {isMenuOpen && (
-            <div className="md:hidden border-t border-gray-100 py-4 space-y-4">
-              <button
-                onClick={() => scrollToSection("features")}
-                className="block w-full text-left px-4 py-2 text-gray-600 hover:text-teal-600"
-              >
+            <div className="md:hidden border-t border-white/10 py-4 space-y-4">
+              <a href="#features" className="block px-4 py-2 text-gray-600 hover:text-blue-600">
                 Features
-              </button>
-              <button
-                onClick={() => scrollToSection("pricing")}
-                className="block w-full text-left px-4 py-2 text-gray-600 hover:text-teal-600"
-              >
+              </a>
+              <a href="#solutions" className="block px-4 py-2 text-gray-600 hover:text-blue-600">
+                Solutions
+              </a>
+              <a href="#pricing" className="block px-4 py-2 text-gray-600 hover:text-blue-600">
                 Pricing
-              </button>
-              <button
-                onClick={() => scrollToSection("testimonials")}
-                className="block w-full text-left px-4 py-2 text-gray-600 hover:text-teal-600"
-              >
-                Testimonials
-              </button>
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="block w-full text-left px-4 py-2 text-gray-600 hover:text-teal-600"
-              >
-                Contact
-              </button>
-              <div className="px-4">
-                <Button
-                  variant="outline"
-                  className="w-full border-teal-200 text-teal-700 hover:bg-teal-50 bg-transparent"
-                >
-                  Login
+              </a>
+              <a href="#resources" className="block px-4 py-2 text-gray-600 hover:text-blue-600">
+                Resources
+              </a>
+              <div className="px-4 space-y-2">
+                <Button variant="ghost" className="w-full">
+                  Sign In
                 </Button>
+                <Button className="w-full gradient-bg-primary text-white">Start Free Trial</Button>
               </div>
             </div>
           )}
@@ -190,785 +97,377 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-teal-50">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-teal-100 rounded-full opacity-20 animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-100 rounded-full opacity-20 animate-pulse delay-1000"></div>
+      <section className="relative overflow-hidden py-20 lg:py-32">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white/30 to-purple-50/50" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <Badge variant="secondary" className="mb-6 px-4 py-2 text-sm font-medium">
+              <Sparkles className="w-4 h-4 mr-2" />
+              Now with AI-Powered Insights
+            </Badge>
+
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
+              Data at the <span className="gradient-text">Speed of Thought</span>
+            </h1>
+
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed">
+              Transform your data workflows with Quantflow's AI-powered analytics platform. Make data-driven decisions
+              faster than ever before with intelligent automation and real-time insights.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+              <Button
+                size="lg"
+                className="gradient-bg-primary hover:opacity-90 transition-opacity px-8 py-4 text-lg text-white"
+              >
+                Start Free Trial
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+              <Button size="lg" variant="outline" className="px-8 py-4 text-lg border-2 bg-transparent">
+                <Play className="mr-2 w-5 h-5" />
+                Watch Demo
+              </Button>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-8 text-sm text-gray-500">
+              <div className="flex items-center">
+                <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
+                No credit card required
+              </div>
+              <div className="flex items-center">
+                <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
+                14-day free trial
+              </div>
+              <div className="flex items-center">
+                <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
+                Cancel anytime
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            {/* Left Column - Text Content */}
-            <div className="text-center lg:text-left">
-              <Badge className="mb-3 bg-teal-100 text-teal-800 hover:bg-teal-200 text-xs">
-                🚀 Now with AI-powered insights
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 animate-float">
+          <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-20 blur-xl" />
+        </div>
+        <div className="absolute top-40 right-20 animate-float" style={{ animationDelay: "2s" }}>
+          <div className="w-24 h-24 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full opacity-20 blur-xl" />
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 bg-white/50 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-3xl font-bold gradient-text mb-2">10M+</div>
+              <div className="text-gray-600">Data Points Processed</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold gradient-text mb-2">99.9%</div>
+              <div className="text-gray-600">Uptime Guarantee</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold gradient-text mb-2">50K+</div>
+              <div className="text-gray-600">Active Users</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold gradient-text mb-2">24/7</div>
+              <div className="text-gray-600">Expert Support</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="py-20 gradient-bg-secondary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              Powerful Features for <span className="gradient-text">Modern Analytics</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Everything you need to transform raw data into actionable insights
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="card-hover glass-effect border-0">
+              <CardHeader>
+                <div className="w-12 h-12 gradient-bg-primary rounded-lg flex items-center justify-center mb-4">
+                  <Brain className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>AI-Powered Insights</CardTitle>
+                <CardDescription>
+                  Leverage machine learning to automatically discover patterns and anomalies in your data
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="card-hover glass-effect border-0">
+              <CardHeader>
+                <div className="w-12 h-12 gradient-bg-primary rounded-lg flex items-center justify-center mb-4">
+                  <Zap className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Real-time Processing</CardTitle>
+                <CardDescription>
+                  Process millions of data points in real-time with our high-performance engine
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="card-hover glass-effect border-0">
+              <CardHeader>
+                <div className="w-12 h-12 gradient-bg-primary rounded-lg flex items-center justify-center mb-4">
+                  <Database className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Universal Connectors</CardTitle>
+                <CardDescription>
+                  Connect to any data source with our extensive library of pre-built integrations
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="card-hover glass-effect border-0">
+              <CardHeader>
+                <div className="w-12 h-12 gradient-bg-primary rounded-lg flex items-center justify-center mb-4">
+                  <BarChart3 className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Interactive Dashboards</CardTitle>
+                <CardDescription>
+                  Create stunning visualizations with our drag-and-drop dashboard builder
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="card-hover glass-effect border-0">
+              <CardHeader>
+                <div className="w-12 h-12 gradient-bg-primary rounded-lg flex items-center justify-center mb-4">
+                  <Lock className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Enterprise Security</CardTitle>
+                <CardDescription>
+                  Bank-grade security with end-to-end encryption and compliance certifications
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="card-hover glass-effect border-0">
+              <CardHeader>
+                <div className="w-12 h-12 gradient-bg-primary rounded-lg flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-white" />
+                </div>
+                <CardTitle>Team Collaboration</CardTitle>
+                <CardDescription>
+                  Share insights and collaborate seamlessly with advanced permission controls
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Demo Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <Badge variant="secondary" className="mb-4">
+                <Rocket className="w-4 h-4 mr-2" />
+                Interactive Demo
               </Badge>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
-                Data at the Speed of{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">
-                  Thought
-                </span>
-              </h1>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Supercharge your data workflows with QuantaFlow's AI-powered platform. Transform complex data into
-                actionable insights in seconds, not hours.
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+                See Quantflow in <span className="gradient-text">Action</span>
+              </h2>
+              <p className="text-lg text-gray-600 mb-8">
+                Experience the power of AI-driven analytics with our interactive demo. Watch as complex data transforms
+                into clear, actionable insights in seconds.
               </p>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-6">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white px-6 py-3 text-base font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 group"
-                  onClick={() => scrollToSection("pricing")}
-                >
-                  Start Free Trial
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-2 border-gray-300 hover:border-teal-300 px-6 py-3 text-base font-semibold rounded-lg group bg-transparent"
-                  onClick={startDemo}
-                >
-                  <Play className="mr-2 w-4 h-4 group-hover:scale-110 transition-transform" />
-                  Watch Demo
-                </Button>
-              </div>
-
-              {/* Social Proof */}
-              <div className="flex items-center justify-center lg:justify-start gap-3 text-sm text-gray-500">
+              <div className="space-y-4 mb-8">
                 <div className="flex items-center">
-                  <div className="flex -space-x-1">
-                    {[1, 2, 3, 4].map((i) => (
-                      <div
-                        key={i}
-                        className="w-6 h-6 rounded-full bg-gradient-to-br from-teal-400 to-blue-500 border-2 border-white"
-                      ></div>
-                    ))}
-                  </div>
-                  <span className="ml-2">Join 10,000+ data teams</span>
+                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                  <span>Real-time data visualization</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                  <span>Automated anomaly detection</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                  <span>Predictive analytics</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                  <span>Custom dashboard creation</span>
                 </div>
               </div>
+
+              <Button size="lg" className="gradient-bg-primary hover:opacity-90 transition-opacity text-white">
+                <Play className="mr-2 w-5 h-5" />
+                Launch Interactive Demo
+              </Button>
             </div>
 
-            {/* Right Column - Compact Demo */}
             <div className="relative">
-              <div className="relative bg-white rounded-xl shadow-xl p-4 border border-gray-100">
-                {/* Compact Dashboard */}
-                <div className="mb-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-lg font-bold text-gray-900">Analytics Dashboard</h3>
-                    <Badge className="bg-green-100 text-green-800 text-xs">
-                      <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse mr-1"></div>
-                      Live
-                    </Badge>
-                  </div>
-
-                  {/* Compact Metrics Grid */}
-                  <div className="grid grid-cols-2 gap-3 mb-4">
-                    <div className="bg-gray-50 rounded-lg p-3">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-xs text-gray-600">Revenue</p>
-                          <p className="text-lg font-bold text-gray-900">$125K</p>
-                        </div>
-                        <DollarSign className="w-5 h-5 text-green-500" />
-                      </div>
-                      <div className="flex items-center mt-1">
-                        <TrendingUp className="w-3 h-3 text-green-500 mr-1" />
-                        <span className="text-xs text-green-600">+12.5%</span>
-                      </div>
-                    </div>
-
-                    <div className="bg-gray-50 rounded-lg p-3">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-xs text-gray-600">Users</p>
-                          <p className="text-lg font-bold text-gray-900">2.8K</p>
-                        </div>
-                        <Users className="w-5 h-5 text-blue-500" />
-                      </div>
-                      <div className="flex items-center mt-1">
-                        <TrendingUp className="w-3 h-3 text-green-500 mr-1" />
-                        <span className="text-xs text-green-600">+8.2%</span>
-                      </div>
-                    </div>
-
-                    <div className="bg-gray-50 rounded-lg p-3">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-xs text-gray-600">Conversion</p>
-                          <p className="text-lg font-bold text-gray-900">3.2%</p>
-                        </div>
-                        <Activity className="w-5 h-5 text-teal-500" />
-                      </div>
-                      <div className="flex items-center mt-1">
-                        <TrendingDown className="w-3 h-3 text-red-500 mr-1" />
-                        <span className="text-xs text-red-600">-0.3%</span>
-                      </div>
-                    </div>
-
-                    <div className="bg-gray-50 rounded-lg p-3">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-xs text-gray-600">Growth</p>
-                          <p className="text-lg font-bold text-gray-900">12.5%</p>
-                        </div>
-                        <BarChart3 className="w-5 h-5 text-purple-500" />
-                      </div>
-                      <div className="flex items-center mt-1">
-                        <TrendingUp className="w-3 h-3 text-green-500 mr-1" />
-                        <span className="text-xs text-green-600">+2.1%</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Compact Chart */}
-                  <div className="bg-gray-50 rounded-lg p-3">
-                    <h4 className="text-sm font-semibold text-gray-900 mb-2">Revenue Trend</h4>
-                    <div className="h-16 bg-gradient-to-r from-teal-50 to-blue-50 rounded flex items-end justify-between p-2">
-                      {[65, 78, 82, 88, 95, 92, 98].map((height, index) => (
-                        <div
-                          key={index}
-                          className="bg-gradient-to-t from-teal-500 to-teal-400 rounded-t transition-all duration-500"
-                          style={{
-                            height: `${height * 0.6}%`,
-                            width: "10%",
-                          }}
-                        ></div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Compact AI Insights */}
-                  <div className="mt-3 p-3 bg-gradient-to-r from-teal-50 to-blue-50 rounded-lg">
-                    <h4 className="text-sm font-semibold text-gray-900 mb-1">🤖 AI Insights</h4>
-                    <ul className="text-xs text-gray-700 space-y-0.5">
-                      <li>• Revenue growth accelerating (+12.5%)</li>
-                      <li>• User acquisition trending upward</li>
-                      <li>• Predicted 15% growth next quarter</li>
-                    </ul>
+              <div className="aspect-video bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl shadow-2xl overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-purple-600/10" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 transition-transform">
+                    <Play className="w-8 h-8 text-blue-600 ml-1" />
                   </div>
                 </div>
               </div>
 
-              {/* Compact Floating Elements */}
-              <div className="absolute -top-2 -right-2 bg-teal-500 text-white px-2 py-1 rounded-full text-xs font-medium shadow-lg animate-bounce">
-                Live Demo
+              {/* Floating metrics */}
+              <div className="absolute -top-4 -right-4 bg-white rounded-lg shadow-lg p-4 animate-float">
+                <div className="flex items-center space-x-2">
+                  <TrendingUp className="w-4 h-4 text-green-500" />
+                  <span className="text-sm font-medium">+23.5% Growth</span>
+                </div>
               </div>
-              <div className="absolute -bottom-2 -left-2 bg-white border border-gray-200 px-3 py-1 rounded-lg shadow-lg">
-                <div className="flex items-center gap-1">
-                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-xs text-gray-600">1.2M records/sec</span>
+
+              <div
+                className="absolute -bottom-4 -left-4 bg-white rounded-lg shadow-lg p-4 animate-float"
+                style={{ animationDelay: "1s" }}
+              >
+                <div className="flex items-center space-x-2">
+                  <Zap className="w-4 h-4 text-yellow-500" />
+                  <span className="text-sm font-medium">Real-time</span>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Interactive Demo Section */}
-      {showDemo && (
-        <section className="py-24 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">See QuantaFlow in Action</h2>
-              <p className="text-xl text-gray-300">Experience the power of AI-driven data analytics in real-time</p>
-            </div>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Video Player */}
-              <div className="relative">
-                <div className="relative bg-black rounded-2xl overflow-hidden shadow-2xl">
-                  <video
-                    ref={videoRef}
-                    className="w-full h-auto"
-                    poster="/placeholder.svg?height=400&width=600"
-                    onPlay={() => setIsVideoPlaying(true)}
-                    onPause={() => setIsVideoPlaying(false)}
-                    muted={isMuted}
-                    loop
-                  >
-                    <source src="/placeholder.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-
-                  {/* Video Controls Overlay */}
-                  <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center group">
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-4">
-                      <Button
-                        onClick={toggleVideo}
-                        className="bg-white bg-opacity-20 hover:bg-opacity-30 text-white border-0 rounded-full w-16 h-16"
-                      >
-                        {isVideoPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
-                      </Button>
-                      <Button
-                        onClick={toggleMute}
-                        className="bg-white bg-opacity-20 hover:bg-opacity-30 text-white border-0 rounded-full w-12 h-12"
-                      >
-                        {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-                      </Button>
-                      <Button className="bg-white bg-opacity-20 hover:bg-opacity-30 text-white border-0 rounded-full w-12 h-12">
-                        <Maximize className="w-5 h-5" />
-                      </Button>
-                    </div>
-                  </div>
-
-                  {/* Video Progress Indicator */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-600">
-                    <div className="h-full bg-teal-500 w-1/3 transition-all duration-1000"></div>
-                  </div>
-                </div>
-
-                {/* Video Stats */}
-                <div className="mt-6 grid grid-cols-3 gap-4">
-                  <div className="bg-gray-800 rounded-lg p-4 text-center">
-                    <div className="text-2xl font-bold text-teal-400">2.3M</div>
-                    <div className="text-sm text-gray-400">Records Processed</div>
-                  </div>
-                  <div className="bg-gray-800 rounded-lg p-4 text-center">
-                    <div className="text-2xl font-bold text-teal-400">0.3s</div>
-                    <div className="text-sm text-gray-400">Query Response</div>
-                  </div>
-                  <div className="bg-gray-800 rounded-lg p-4 text-center">
-                    <div className="text-2xl font-bold text-teal-400">99.9%</div>
-                    <div className="text-sm text-gray-400">Accuracy Rate</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Interactive Demo Steps */}
-              <div className="space-y-6">
-                <div className="flex items-center justify-between mb-8">
-                  <h3 className="text-2xl font-bold">Interactive Demo</h3>
-                  <div className="flex items-center gap-2">
-                    <Button
-                      onClick={resetDemo}
-                      variant="outline"
-                      size="sm"
-                      className="border-gray-600 text-gray-300 hover:bg-gray-700 bg-transparent"
-                    >
-                      <RotateCcw className="w-4 h-4 mr-2" />
-                      Reset
-                    </Button>
-                  </div>
-                </div>
-
-                {/* Demo Steps */}
-                <div className="space-y-4">
-                  {[
-                    {
-                      title: "Upload Your Data",
-                      description: "Drag and drop CSV, JSON, or connect to your database",
-                      active: demoStep >= 0,
-                      completed: demoStep > 0,
-                    },
-                    {
-                      title: "AI Analysis",
-                      description: "Our AI automatically detects patterns and anomalies",
-                      active: demoStep >= 1,
-                      completed: demoStep > 1,
-                    },
-                    {
-                      title: "Generate Insights",
-                      description: "Get actionable insights with natural language explanations",
-                      active: demoStep >= 2,
-                      completed: demoStep > 2,
-                    },
-                    {
-                      title: "Share Results",
-                      description: "Export reports or share interactive dashboards",
-                      active: demoStep >= 3,
-                      completed: demoStep > 3,
-                    },
-                  ].map((step, index) => (
-                    <div
-                      key={index}
-                      className={`p-4 rounded-lg border-2 transition-all duration-300 cursor-pointer ${
-                        step.active
-                          ? step.completed
-                            ? "border-teal-500 bg-teal-500 bg-opacity-10"
-                            : "border-teal-400 bg-teal-400 bg-opacity-5"
-                          : "border-gray-600 bg-gray-800"
-                      }`}
-                      onClick={() => setDemoStep(index)}
-                    >
-                      <div className="flex items-center">
-                        <div
-                          className={`w-8 h-8 rounded-full flex items-center justify-center mr-4 ${
-                            step.completed
-                              ? "bg-teal-500 text-white"
-                              : step.active
-                                ? "bg-teal-400 text-gray-900"
-                                : "bg-gray-600 text-gray-400"
-                          }`}
-                        >
-                          {step.completed ? <Check className="w-4 h-4" /> : index + 1}
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-white">{step.title}</h4>
-                          <p className="text-sm text-gray-400">{step.description}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <Button
-                  onClick={nextDemoStep}
-                  className="w-full bg-teal-600 hover:bg-teal-700 text-white py-3"
-                  disabled={demoStep >= 3}
-                >
-                  {demoStep >= 3 ? "Demo Complete!" : "Next Step"}
-                  {demoStep < 3 && <ArrowRight className="ml-2 w-4 h-4" />}
-                </Button>
-
-                {/* Demo CTA */}
-                <div className="mt-8 p-6 bg-gradient-to-r from-teal-600 to-blue-600 rounded-lg">
-                  <h4 className="text-xl font-bold mb-2">Ready to try it yourself?</h4>
-                  <p className="text-teal-100 mb-4">Start your free trial and experience the power of QuantaFlow</p>
-                  <Button
-                    onClick={() => scrollToSection("pricing")}
-                    className="bg-white text-teal-600 hover:bg-gray-100"
-                  >
-                    Start Free Trial
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Feature Highlights */}
-      <section id="features" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Powerful Features for Modern Teams</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Everything you need to transform your data workflows and make better decisions faster.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
-            {/* AI-Powered */}
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-2">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-teal-100 to-teal-200 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                  <Brain className="w-8 h-8 text-teal-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">AI-Powered Analytics</h3>
-                <p className="text-gray-600 leading-relaxed mb-6">
-                  Advanced machine learning algorithms automatically detect patterns, anomalies, and trends in your data
-                  streams for intelligent insights.
-                </p>
-                <ul className="text-sm text-gray-500 space-y-2">
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-teal-500 mr-2" />
-                    Automated pattern recognition
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-teal-500 mr-2" />
-                    Predictive analytics
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-teal-500 mr-2" />
-                    Natural language queries
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* Secure */}
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-2">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-teal-100 to-teal-200 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                  <Shield className="w-8 h-8 text-teal-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Enterprise Security</h3>
-                <p className="text-gray-600 leading-relaxed mb-6">
-                  Bank-grade security with end-to-end encryption, SOC 2 compliance, and granular access controls to
-                  protect your most sensitive data.
-                </p>
-                <ul className="text-sm text-gray-500 space-y-2">
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-teal-500 mr-2" />
-                    End-to-end encryption
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-teal-500 mr-2" />
-                    SOC 2 Type II certified
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-teal-500 mr-2" />
-                    Role-based access control
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* Lightning Fast */}
-            <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 group hover:-translate-y-2">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-teal-100 to-teal-200 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                  <Zap className="w-8 h-8 text-teal-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Lightning Fast</h3>
-                <p className="text-gray-600 leading-relaxed mb-6">
-                  Process millions of data points in real-time with our optimized infrastructure built for speed, scale,
-                  and reliability.
-                </p>
-                <ul className="text-sm text-gray-500 space-y-2">
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-teal-500 mr-2" />
-                    Sub-second query response
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-teal-500 mr-2" />
-                    Auto-scaling infrastructure
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="w-4 h-4 text-teal-500 mr-2" />
-                    99.99% uptime SLA
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Simple, Transparent Pricing</h2>
-            <p className="text-xl text-gray-600">
-              Choose the plan that fits your team's needs. No hidden fees, cancel anytime.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {/* Starter Plan */}
-            <Card className="border-2 border-gray-200 hover:border-teal-300 transition-colors">
-              <CardContent className="p-8">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Starter</h3>
-                <p className="text-gray-600 mb-6">Perfect for small teams getting started</p>
-                <div className="mb-6">
-                  <span className="text-4xl font-bold text-gray-900">$29</span>
-                  <span className="text-gray-600">/month</span>
-                </div>
-                <ul className="space-y-3 mb-8">
-                  <li className="flex items-center">
-                    <Check className="w-5 h-5 text-teal-500 mr-3" />
-                    Up to 100K records/month
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="w-5 h-5 text-teal-500 mr-3" />5 team members
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="w-5 h-5 text-teal-500 mr-3" />
-                    Basic analytics
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="w-5 h-5 text-teal-500 mr-3" />
-                    Email support
-                  </li>
-                </ul>
-                <Button className="w-full bg-transparent" variant="outline">
-                  Start Free Trial
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Professional Plan */}
-            <Card className="border-2 border-teal-500 relative shadow-lg">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <Badge className="bg-teal-500 text-white px-4 py-1">Most Popular</Badge>
-              </div>
-              <CardContent className="p-8">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Professional</h3>
-                <p className="text-gray-600 mb-6">For growing teams with advanced needs</p>
-                <div className="mb-6">
-                  <span className="text-4xl font-bold text-gray-900">$99</span>
-                  <span className="text-gray-600">/month</span>
-                </div>
-                <ul className="space-y-3 mb-8">
-                  <li className="flex items-center">
-                    <Check className="w-5 h-5 text-teal-500 mr-3" />
-                    Up to 1M records/month
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="w-5 h-5 text-teal-500 mr-3" />
-                    25 team members
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="w-5 h-5 text-teal-500 mr-3" />
-                    Advanced AI analytics
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="w-5 h-5 text-teal-500 mr-3" />
-                    Priority support
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="w-5 h-5 text-teal-500 mr-3" />
-                    Custom integrations
-                  </li>
-                </ul>
-                <Button className="w-full bg-teal-600 hover:bg-teal-700">Start Free Trial</Button>
-              </CardContent>
-            </Card>
-
-            {/* Enterprise Plan */}
-            <Card className="border-2 border-gray-200 hover:border-teal-300 transition-colors">
-              <CardContent className="p-8">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Enterprise</h3>
-                <p className="text-gray-600 mb-6">For large organizations with custom needs</p>
-                <div className="mb-6">
-                  <span className="text-4xl font-bold text-gray-900">Custom</span>
-                </div>
-                <ul className="space-y-3 mb-8">
-                  <li className="flex items-center">
-                    <Check className="w-5 h-5 text-teal-500 mr-3" />
-                    Unlimited records
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="w-5 h-5 text-teal-500 mr-3" />
-                    Unlimited team members
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="w-5 h-5 text-teal-500 mr-3" />
-                    White-label solution
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="w-5 h-5 text-teal-500 mr-3" />
-                    Dedicated support
-                  </li>
-                  <li className="flex items-center">
-                    <Check className="w-5 h-5 text-teal-500 mr-3" />
-                    On-premise deployment
-                  </li>
-                </ul>
-                <Button className="w-full bg-transparent" variant="outline" onClick={() => scrollToSection("contact")}>
-                  Contact Sales
-                </Button>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section id="testimonials" className="py-24 bg-white">
+      <section className="py-20 gradient-bg-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Loved by Data Teams Worldwide</h2>
-            <p className="text-xl text-gray-600">See what our customers have to say about QuantaFlow</p>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              Trusted by <span className="gradient-text">Industry Leaders</span>
+            </h2>
+            <p className="text-xl text-gray-600">See what our customers are saying about Quantflow</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Sarah Chen",
-                role: "Head of Data Science",
-                company: "TechCorp",
-                content:
-                  "QuantaFlow has revolutionized how we handle data analysis. What used to take hours now takes minutes.",
-                rating: 5,
-              },
-              {
-                name: "Michael Rodriguez",
-                role: "CTO",
-                company: "DataFlow Inc",
-                content: "The AI-powered insights have helped us identify patterns we never would have found manually.",
-                rating: 5,
-              },
-              {
-                name: "Emily Johnson",
-                role: "Analytics Manager",
-                company: "Growth Labs",
-                content: "Incredible platform with outstanding support. Our team productivity has increased by 300%.",
-                rating: 5,
-              },
-            ].map((testimonial, index) => (
-              <Card key={index} className="border-0 shadow-lg">
-                <CardContent className="p-8">
-                  <div className="flex mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                    ))}
+            <Card className="glass-effect border-0">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-600 mb-4">
+                  "Quantflow transformed our data analysis process. What used to take hours now takes minutes."
+                </p>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mr-3" />
+                  <div>
+                    <div className="font-medium">Sarah Chen</div>
+                    <div className="text-sm text-gray-500">Data Director, TechCorp</div>
                   </div>
-                  <p className="text-gray-600 mb-6 italic">"{testimonial.content}"</p>
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-teal-400 to-blue-500 rounded-full flex items-center justify-center text-white font-semibold mr-4">
-                      {testimonial.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                      <p className="text-sm text-gray-600">
-                        {testimonial.role} at {testimonial.company}
-                      </p>
-                    </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="glass-effect border-0">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-600 mb-4">
+                  "The AI insights feature helped us identify opportunities we never knew existed."
+                </p>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-gradient-to-r from-green-400 to-blue-400 rounded-full mr-3" />
+                  <div>
+                    <div className="font-medium">Michael Rodriguez</div>
+                    <div className="text-sm text-gray-500">CEO, DataFlow Inc</div>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="glass-effect border-0">
+              <CardContent className="p-6">
+                <div className="flex items-center mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-600 mb-4">
+                  "Incredible platform with outstanding support. Our team productivity increased by 40%."
+                </p>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-3" />
+                  <div>
+                    <div className="font-medium">Emily Johnson</div>
+                    <div className="text-sm text-gray-500">Analytics Lead, StartupXYZ</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* Client Logo Strip */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm font-medium text-gray-500 mb-8 uppercase tracking-wide">
-            Trusted by leading companies worldwide
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-6">Ready to Transform Your Data?</h2>
+          <p className="text-xl mb-8 opacity-90">
+            Join thousands of companies already using Quantflow to make better decisions faster.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center">
-            {[
-              { name: "Microsoft", query: "Microsoft logo" },
-              { name: "Google", query: "Google logo" },
-              { name: "Amazon", query: "Amazon logo" },
-              { name: "Netflix", query: "Netflix logo" },
-              { name: "Spotify", query: "Spotify logo" },
-            ].map((company, i) => (
-              <div key={i} className="opacity-60 hover:opacity-100 transition-opacity duration-200">
-                <Image
-                  src={`/placeholder.svg?height=60&width=120&query=${company.query}`}
-                  alt={`${company.name} logo`}
-                  width={120}
-                  height={60}
-                  className="h-12 w-auto object-contain filter grayscale hover:grayscale-0 transition-all"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-24 bg-gradient-to-br from-teal-50 to-blue-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Ready to Get Started?</h2>
-            <p className="text-xl text-gray-600">
-              Join thousands of teams already using QuantaFlow to supercharge their data workflows.
-            </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <Input
+              placeholder="Enter your work email"
+              className="max-w-sm bg-white/10 border-white/20 text-white placeholder:text-white/60"
+            />
+            <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 px-8">
+              Start Free Trial
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
           </div>
 
-          <Card className="border-0 shadow-xl">
-            <CardContent className="p-8">
-              <form onSubmit={handleEmailSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name
-                    </label>
-                    <Input id="name" type="text" placeholder="Enter your full name" className="w-full" required />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Work Email
-                    </label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="Enter your work email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full"
-                      required
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                    Company
-                  </label>
-                  <Input id="company" type="text" placeholder="Enter your company name" className="w-full" required />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message (Optional)
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={4}
-                    placeholder="Tell us about your data challenges..."
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500"
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white py-3 text-lg font-semibold"
-                  disabled={isSubmitted}
-                >
-                  {isSubmitted ? (
-                    <>
-                      <Check className="mr-2 w-5 h-5" />
-                      Thank you! We'll be in touch soon.
-                    </>
-                  ) : (
-                    <>
-                      Get Started Free
-                      <ArrowRight className="ml-2 w-5 h-5" />
-                    </>
-                  )}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+          <p className="text-sm opacity-75">No credit card required • 14-day free trial • Cancel anytime</p>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid md:grid-cols-4 gap-8">
-            {/* Company Info */}
-            <div className="md:col-span-2">
-              <div className="flex items-center mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-teal-500 to-teal-700 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">Q</span>
+      <footer className="bg-gray-900 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <div className="flex items-center space-x-2 mb-4">
+                <div className="w-8 h-8 gradient-bg-primary rounded-lg flex items-center justify-center">
+                  <Sparkles className="w-5 h-5 text-white" />
                 </div>
-                <span className="ml-2 text-xl font-semibold">QuantaFlow</span>
+                <span className="text-xl font-bold">Quantflow</span>
               </div>
-              <p className="text-gray-400 mb-6 max-w-md">
-                Empowering data teams worldwide with AI-powered analytics and lightning-fast insights. Transform your
-                data workflows today.
+              <p className="text-gray-400 mb-4">
+                Data at the speed of thought. Transform your analytics with AI-powered insights.
               </p>
               <div className="flex space-x-4">
-                {["Twitter", "LinkedIn", "GitHub"].map((social) => (
-                  <div
-                    key={social}
-                    className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-teal-600 transition-colors cursor-pointer"
-                  >
-                    <span className="text-sm">{social[0]}</span>
-                  </div>
-                ))}
+                <div className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-700 transition-colors">
+                  <Globe className="w-4 h-4" />
+                </div>
+                <div className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-700 transition-colors">
+                  <MessageCircle className="w-4 h-4" />
+                </div>
               </div>
             </div>
 
-            {/* Product Links */}
             <div>
               <h3 className="font-semibold mb-4">Product</h3>
               <ul className="space-y-2 text-gray-400">
                 <li>
-                  <button onClick={() => scrollToSection("features")} className="hover:text-white transition-colors">
-                    Features
-                  </button>
-                </li>
-                <li>
-                  <button onClick={() => scrollToSection("pricing")} className="hover:text-white transition-colors">
-                    Pricing
-                  </button>
-                </li>
-                <li>
                   <a href="#" className="hover:text-white transition-colors">
-                    API Docs
+                    Features
                   </a>
                 </li>
                 <li>
@@ -976,10 +475,19 @@ export default function LandingPage() {
                     Integrations
                   </a>
                 </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    API
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Security
+                  </a>
+                </li>
               </ul>
             </div>
 
-            {/* Company Links */}
             <div>
               <h3 className="font-semibold mb-4">Company</h3>
               <ul className="space-y-2 text-gray-400">
@@ -990,34 +498,61 @@ export default function LandingPage() {
                 </li>
                 <li>
                   <a href="#" className="hover:text-white transition-colors">
+                    Careers
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
                     Blog
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-white transition-colors">
-                    Careers
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4">Support</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Help Center
                   </a>
                 </li>
                 <li>
-                  <button onClick={() => scrollToSection("contact")} className="hover:text-white transition-colors">
-                    Contact
-                  </button>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Documentation
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Community
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Status
+                  </a>
                 </li>
               </ul>
             </div>
           </div>
 
-          {/* Bottom Footer */}
-          <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">© {new Date().getFullYear()} QuantaFlow. All rights reserved.</p>
+          <Separator className="bg-gray-800 mb-8" />
+
+          <div className="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
+            <p>&copy; 2024 Quantflow Inc. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
+              <a href="#" className="hover:text-white transition-colors">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
+              <a href="#" className="hover:text-white transition-colors">
                 Terms of Service
               </a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
+              <a href="#" className="hover:text-white transition-colors">
                 Cookie Policy
               </a>
             </div>
