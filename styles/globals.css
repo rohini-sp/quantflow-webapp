@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: var(--font-inter);
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -35,31 +39,31 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 3.9%; /* Dark grey/black */
+    --foreground: 0 0% 98%; /* Light grey/white */
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
+    --primary: 0 0% 98%; /* Silver */
     --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
+    --secondary: 0 0% 14.9%; /* Darker grey */
     --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 14.9%;
     --muted-foreground: 0 0% 63.9%;
     --accent: 0 0% 14.9%;
     --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 62.8% 30.6%; /* Keep red for destructive */
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 14.9%;
     --input: 0 0% 14.9%;
@@ -86,5 +90,272 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-inter); /* Ensure Inter is the default body font */
   }
+
+  .font-mono {
+    font-family: var(--font-jetbrains-mono); /* Ensure JetBrains Mono is used for .font-mono */
+  }
+}
+
+/* Custom styles for Quantflow */
+.qf-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.qf-scrollbar::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.qf-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #a0a0a0, #e0e0e0);
+  border-radius: 4px;
+}
+
+.qf-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #e0e0e0, #a0a0a0);
+}
+
+/* New Gradients */
+.qf-gradient-silver-light {
+  background: linear-gradient(135deg, #a0a0a0, #e0e0e0);
+}
+
+.qf-gradient-silver-dark {
+  background: linear-gradient(135deg, #606060, #909090);
+}
+
+.qf-gradient-metallic {
+  background: linear-gradient(135deg, #404040, #707070);
+}
+
+.qf-gradient-deep-void {
+  background: linear-gradient(135deg, #0a0a0a, #000000);
+}
+
+/* Text Gradients */
+.qf-gradient-text-silver-light {
+  background: linear-gradient(45deg, #a0a0a0, #e0e0e0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.qf-gradient-text-silver-dark {
+  background: linear-gradient(45deg, #606060, #909090);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Animations */
+.qf-glitch {
+  animation: glitch 1s linear infinite;
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 0.05em 0 0 rgba(160, 160, 160, 0.75), -0.05em -0.025em 0 rgba(224, 224, 224, 0.75), -0.025em 0.05em 0
+      rgba(100, 100, 100, 0.75);
+  }
+  14% {
+    text-shadow: -0.05em -0.025em 0 rgba(160, 160, 160, 0.75), 0.025em 0.025em 0 rgba(224, 224, 224, 0.75), -0.05em
+      -0.05em 0 rgba(100, 100, 100, 0.75);
+  }
+  15% {
+    text-shadow: 0.05em 0.05em 0 rgba(160, 160, 160, 0.75), -0.05em -0.025em 0 rgba(224, 224, 224, 0.75), 0.025em 0.05em
+      0 rgba(100, 100, 100, 0.75);
+  }
+  49% {
+    text-shadow: 0.05em 0.05em 0 rgba(160, 160, 160, 0.75), -0.05em -0.025em 0 rgba(224, 224, 224, 0.75), 0.025em 0.05em
+      0 rgba(100, 100, 100, 0.75);
+  }
+  50% {
+    text-shadow: -0.05em 0 0 rgba(160, 160, 160, 0.75), 0.05em -0.025em 0 rgba(224, 224, 224, 0.75), -0.05em 0.05em 0
+      rgba(100, 100, 100, 0.75);
+  }
+  99% {
+    text-shadow: -0.05em 0 0 rgba(160, 160, 160, 0.75), 0.05em -0.025em 0 rgba(224, 224, 224, 0.75), -0.05em 0.05em 0
+      rgba(100, 100, 100, 0.75);
+  }
+  100% {
+    text-shadow: 0.05em 0 0 rgba(160, 160, 160, 0.75), -0.05em -0.025em 0 rgba(224, 224, 224, 0.75), -0.025em 0.05em 0
+      rgba(100, 100, 100, 0.75);
+  }
+}
+
+.qf-pulse-metallic {
+  animation: pulse-metallic 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes pulse-metallic {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+.qf-metallic-glow {
+  box-shadow: 0 0 8px rgba(160, 160, 160, 0.8), 0 0 16px rgba(224, 224, 224, 0.6);
+}
+
+.qf-metallic-text {
+  text-shadow: 0 0 5px rgba(160, 160, 160, 0.6), 0 0 10px rgba(224, 224, 224, 0.4);
+}
+
+.qf-matrix-rain {
+  animation: matrix-rain linear infinite;
+}
+
+@keyframes matrix-rain {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.qf-float-metallic {
+  animation: float-metallic 6s ease-in-out infinite;
+}
+
+@keyframes float-metallic {
+  0% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+}
+
+.qf-rotate-metallic {
+  animation: rotate-metallic 12s linear infinite;
+}
+
+@keyframes rotate-metallic {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.qf-slide-metallic {
+  animation: slide-in-metallic 1s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes slide-in-metallic {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Layout */
+.qf-nav {
+  @apply fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-lg border-b border-gray-600/20 py-4 px-6 md:px-8;
+}
+
+.qf-nav-content {
+  @apply flex items-center justify-between max-w-7xl mx-auto;
+}
+
+.qf-mobile-menu {
+  @apply fixed inset-0 bg-gray-900/95 backdrop-blur-lg z-40 flex flex-col p-6 pt-24 transition-transform duration-300 ease-in-out transform -translate-y-full md:hidden;
+}
+
+.qf-mobile-menu.open {
+  @apply translate-y-0;
+}
+
+.qf-section {
+  @apply min-h-screen flex items-center justify-center py-20 relative;
+}
+
+.qf-section-content {
+  @apply relative z-10 w-full;
+}
+
+.qf-container {
+  @apply max-w-7xl mx-auto px-6 md:px-8;
+}
+
+/* Cards & Buttons */
+.qf-card-dark {
+  @apply bg-gray-800/60 border border-gray-600/20 rounded-2xl p-8 backdrop-blur-sm;
+}
+
+.qf-card-light-border {
+  @apply bg-gray-800/60 border border-gray-500/20 rounded-2xl p-8 backdrop-blur-sm;
+}
+
+.qf-glass-light {
+  @apply bg-gray-700/10 border border-gray-600/20 rounded-xl backdrop-blur-md;
+}
+
+.qf-glass-medium {
+  @apply bg-gray-600/10 border border-gray-500/20 rounded-xl backdrop-blur-md;
+}
+
+.qf-glass-dark {
+  @apply bg-gray-800/20 border border-gray-700/20 rounded-xl backdrop-blur-md;
+}
+
+.qf-hover-metallic:hover {
+  @apply border-gray-400 shadow-lg shadow-gray-400/20 transition-all duration-300;
+}
+
+.qf-btn-silver {
+  @apply bg-gradient-to-r from-gray-400 to-gray-200 text-gray-900 rounded-full px-6 py-3 flex items-center justify-center transition-all duration-300 hover:from-gray-300 hover:to-gray-100 focus-metallic;
+}
+
+.qf-btn-dark-silver {
+  @apply bg-gradient-to-r from-gray-600 to-gray-400 text-white rounded-full px-6 py-3 flex items-center justify-center transition-all duration-300 hover:from-gray-500 hover:to-gray-300 focus-metallic;
+}
+
+.qf-btn-ghost {
+  @apply text-gray-400 border border-gray-600/30 bg-transparent rounded-full px-6 py-3 flex items-center justify-center transition-all duration-300 hover:bg-gray-700/10 focus-metallic;
+}
+
+.focus-metallic:focus-visible {
+  outline: 2px solid #a0a0a0;
+  outline-offset: 2px;
+}
+
+/* Fluid Typography */
+.text-fluid-6xl {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+}
+
+.text-fluid-5xl {
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+}
+
+.text-fluid-4xl {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+}
+
+.text-fluid-3xl {
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+}
+
+.text-fluid-2xl {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+.text-fluid-lg {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
 }

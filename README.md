@@ -1,30 +1,64 @@
-# Quantaflow landing page
+# Quantflow Landing Page
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+This is a landing page for Quantflow, an AI-enhanced data processing platform.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/rohini-sps-projects/v0-quantaflow-landing-page)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/NQX24OZMmia)
+## Features
 
-## Overview
+- Modern, sleek UI with a silver, gray, and black color scheme.
+- Responsive design for various devices.
+- Hero section with AI-themed animations.
+- Core Capabilities section highlighting key features.
+- Live Demo section with a simulated AI dashboard.
+- Testimonials from satisfied clients.
+- Flexible Pricing Plans.
+- Contact section with a form and contact details.
+- Blog section for articles and updates.
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+## Technologies Used
+
+- Next.js (App Router)
+- React
+- Tailwind CSS
+- shadcn/ui
+- Lucide React icons
+
+## Getting Started
+
+1.  **Clone the repository:**
+    \`\`\`bash
+    git clone https://github.com/your-username/quantflow-landing.git
+    cd quantflow-landing
+    \`\`\`
+2.  **Install dependencies:**
+    \`\`\`bash
+    npm install
+    # or
+    yarn install
+    \`\`\`
+3.  **Run the development server:**
+    \`\`\`bash
+    npm run dev
+    # or
+    yarn dev
+    \`\`\`
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Project Structure
+
+- `app/`: Contains the main Next.js application pages and layout.
+- `components/`: Reusable React components, including UI components from shadcn/ui and custom components.
+- `components/layout/`: Layout-specific components like `Header` and `Footer`.
+- `components/sections/`: Individual sections of the landing page.
+- `lib/`: Utility functions.
+- `public/`: Static assets like images.
+- `styles/`: Global CSS styles and custom Tailwind CSS.
+
+## Customization
+
+- **Colors:** Modify `tailwind.config.ts` and `app/globals.css` to adjust the color palette.
+- **Content:** Update text and images in `app/page.tsx` and other section components.
+- **Features:** Add or remove sections and components as needed.
 
 ## Deployment
 
-Your project is live at:
-
-**[https://vercel.com/rohini-sps-projects/v0-quantaflow-landing-page](https://vercel.com/rohini-sps-projects/v0-quantaflow-landing-page)**
-
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.dev/chat/projects/NQX24OZMmia](https://v0.dev/chat/projects/NQX24OZMmia)**
-
-## How It Works
-
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+This project can be easily deployed to Vercel.
