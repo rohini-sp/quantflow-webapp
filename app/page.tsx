@@ -520,48 +520,48 @@ export default function QuantflowLanding() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto">
               {/* Starter Plan */}
-              <Card className="qf-hover-lift border-2 border-gray-200 hover:border-indigo-300 transition-colors h-full">
-                <CardContent className="p-6 sm:p-8 text-center h-full flex flex-col">
-                  <h3 className="text-xl sm:text-2xl font-bold mb-2">Starter</h3>
-                  <p className="text-gray-600 mb-4 sm:mb-6">Perfect for small teams</p>
-                  <div className="mb-6 sm:mb-8">
-                    <span className="text-3xl sm:text-5xl font-bold text-gray-900">$49</span>
-                    <span className="text-gray-600">/month</span>
+              <Card className="qf-hover-lift border-2 border-gray-200 hover:border-indigo-300 transition-colors h-full w-full">
+                <CardContent className="p-4 sm:p-6 lg:p-8 text-center h-full flex flex-col">
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2">Starter</h3>
+                  <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 lg:mb-6">Perfect for small teams</p>
+                  <div className="mb-4 sm:mb-6 lg:mb-8">
+                    <span className="text-2xl sm:text-3xl lg:text-5xl font-bold text-gray-900">$49</span>
+                    <span className="text-sm sm:text-base text-gray-600">/month</span>
                   </div>
-                  <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 text-left flex-grow">
+                  <ul className="space-y-2 sm:space-y-3 lg:space-y-4 mb-4 sm:mb-6 lg:mb-8 text-left flex-grow">
                     {["Up to 1M data points/month", "5 team members", "Basic AI insights", "Email support"].map(
                       (feature, index) => (
-                        <li key={index} className="flex items-center text-sm sm:text-base">
-                          <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 mr-2 sm:mr-3 flex-shrink-0" />
-                          {feature}
+                        <li key={index} className="flex items-start text-xs sm:text-sm lg:text-base">
+                          <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-green-500 mr-2 sm:mr-3 flex-shrink-0 mt-0.5" />
+                          <span className="leading-tight">{feature}</span>
                         </li>
                       ),
                     )}
                   </ul>
-                  <Button className="w-full bg-transparent focus-visible-ring" variant="outline">
+                  <Button className="w-full bg-transparent focus-visible-ring text-sm sm:text-base" variant="outline">
                     Start Free Trial
                   </Button>
                 </CardContent>
               </Card>
 
               {/* Professional Plan */}
-              <Card className="qf-hover-lift border-2 border-indigo-500 relative shadow-xl transform scale-105 h-full">
-                <div className="absolute -top-3 sm:-top-4 left-1/2 transform -translate-x-1/2">
-                  <Badge className="qf-gradient-primary text-white px-4 sm:px-6 py-1.5 sm:py-2 border-0 text-xs sm:text-sm">
+              <Card className="qf-hover-lift border-2 border-indigo-500 relative shadow-xl lg:transform lg:scale-105 h-full w-full order-first md:order-none">
+                <div className="absolute -top-2 sm:-top-3 lg:-top-4 left-1/2 transform -translate-x-1/2">
+                  <Badge className="qf-gradient-primary text-white px-3 sm:px-4 lg:px-6 py-1 sm:py-1.5 lg:py-2 border-0 text-xs sm:text-sm">
                     <Award className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                     Most Popular
                   </Badge>
                 </div>
-                <CardContent className="p-6 sm:p-8 text-center h-full flex flex-col">
-                  <h3 className="text-xl sm:text-2xl font-bold mb-2">Professional</h3>
-                  <p className="text-gray-600 mb-4 sm:mb-6">For growing businesses</p>
-                  <div className="mb-6 sm:mb-8">
-                    <span className="text-3xl sm:text-5xl font-bold text-gray-900">$149</span>
-                    <span className="text-gray-600">/month</span>
+                <CardContent className="p-4 sm:p-6 lg:p-8 text-center h-full flex flex-col pt-6 sm:pt-8 lg:pt-10">
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2">Professional</h3>
+                  <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 lg:mb-6">For growing businesses</p>
+                  <div className="mb-4 sm:mb-6 lg:mb-8">
+                    <span className="text-2xl sm:text-3xl lg:text-5xl font-bold text-gray-900">$149</span>
+                    <span className="text-sm sm:text-base text-gray-600">/month</span>
                   </div>
-                  <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 text-left flex-grow">
+                  <ul className="space-y-2 sm:space-y-3 lg:space-y-4 mb-4 sm:mb-6 lg:mb-8 text-left flex-grow">
                     {[
                       "Up to 10M data points/month",
                       "25 team members",
@@ -569,25 +569,27 @@ export default function QuantflowLanding() {
                       "Priority support",
                       "Custom integrations",
                     ].map((feature, index) => (
-                      <li key={index} className="flex items-center text-sm sm:text-base">
-                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 mr-2 sm:mr-3 flex-shrink-0" />
-                        {feature}
+                      <li key={index} className="flex items-start text-xs sm:text-sm lg:text-base">
+                        <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-green-500 mr-2 sm:mr-3 flex-shrink-0 mt-0.5" />
+                        <span className="leading-tight">{feature}</span>
                       </li>
                     ))}
                   </ul>
-                  <Button className="w-full btn-primary focus-visible-ring">Start Free Trial</Button>
+                  <Button className="w-full btn-primary focus-visible-ring text-sm sm:text-base">
+                    Start Free Trial
+                  </Button>
                 </CardContent>
               </Card>
 
               {/* Enterprise Plan */}
-              <Card className="qf-hover-lift border-2 border-gray-200 hover:border-indigo-300 transition-colors h-full">
-                <CardContent className="p-6 sm:p-8 text-center h-full flex flex-col">
-                  <h3 className="text-xl sm:text-2xl font-bold mb-2">Enterprise</h3>
-                  <p className="text-gray-600 mb-4 sm:mb-6">For large organizations</p>
-                  <div className="mb-6 sm:mb-8">
-                    <span className="text-3xl sm:text-5xl font-bold text-gray-900">Custom</span>
+              <Card className="qf-hover-lift border-2 border-gray-200 hover:border-indigo-300 transition-colors h-full w-full md:col-span-2 lg:col-span-1">
+                <CardContent className="p-4 sm:p-6 lg:p-8 text-center h-full flex flex-col">
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2">Enterprise</h3>
+                  <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 lg:mb-6">For large organizations</p>
+                  <div className="mb-4 sm:mb-6 lg:mb-8">
+                    <span className="text-2xl sm:text-3xl lg:text-5xl font-bold text-gray-900">Custom</span>
                   </div>
-                  <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 text-left flex-grow">
+                  <ul className="space-y-2 sm:space-y-3 lg:space-y-4 mb-4 sm:mb-6 lg:mb-8 text-left flex-grow">
                     {[
                       "Unlimited data points",
                       "Unlimited team members",
@@ -595,13 +597,13 @@ export default function QuantflowLanding() {
                       "Dedicated support",
                       "On-premise deployment",
                     ].map((feature, index) => (
-                      <li key={index} className="flex items-center text-sm sm:text-base">
-                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 mr-2 sm:mr-3 flex-shrink-0" />
-                        {feature}
+                      <li key={index} className="flex items-start text-xs sm:text-sm lg:text-base">
+                        <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-green-500 mr-2 sm:mr-3 flex-shrink-0 mt-0.5" />
+                        <span className="leading-tight">{feature}</span>
                       </li>
                     ))}
                   </ul>
-                  <Button className="w-full bg-transparent focus-visible-ring" variant="outline">
+                  <Button className="w-full bg-transparent focus-visible-ring text-sm sm:text-base" variant="outline">
                     Contact Sales
                   </Button>
                 </CardContent>
