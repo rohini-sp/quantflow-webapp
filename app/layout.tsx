@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Quantflow - Data at the Speed of Thought",
   description:
     "Transform your data workflows with Quantflow's AI-powered analytics platform. Make data-driven decisions faster than ever before.",
-    generator: 'v0.dev'
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
